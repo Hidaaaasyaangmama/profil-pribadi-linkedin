@@ -1,0 +1,275 @@
+/* ==========================================================
+   style.css - Tugas 2 (CSS) Profil Ummi Bad'il Hidayah
+   Penilaian dosen: warna, font, padding, margin, layout, kerapian
+
+   Isi:
+   1. Variabel warna
+   2. Reset & dasar (font, teks)
+   3. Layout umum (container, section)
+   4. Header
+   5. Navbar
+   6. Section (pendidikan, keahlian, portofolio, kontak)
+   7. Footer
+   8. Responsif
+   ========================================================== */
+
+
+/* ---------- 1. VARIABEL WARNA ----------
+   Putih dan hitam sebagai dasar, orange sebagai aksen. */
+:root {
+  --putih: #ffffff;
+  --abu-muda: #f5f5f5;
+  --hitam: #111111;
+  --abu-teks: #555555;
+  --garis: #e0e0e0;
+  --orange: #c2410c;
+}
+
+
+/* ---------- 2. RESET & DASAR ---------- */
+* {
+  box-sizing: border-box;   /* lebar elemen sudah termasuk padding & border */
+  margin: 0;                /* hapus jarak bawaan browser */
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--hitam);
+  background-color: var(--putih);
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 1.9rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Garis orange kecil di bawah judul section */
+h2::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  margin-top: 0.5rem;
+  background-color: var(--orange);
+  border-radius: 2px;
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--orange);
+}
+
+
+/* ---------- 3. LAYOUT UMUM ---------- */
+/* .container membatasi lebar isi dan menengahkannya */
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.bagian {
+  padding: 4rem 0;
+  scroll-margin-top: 60px;   /* judul tidak tertutup navbar saat di-scroll */
+}
+
+.bagian-abu {
+  background-color: var(--abu-muda);
+}
+
+
+/* ---------- 4. HEADER ---------- */
+header {
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--garis);
+}
+
+.hero {
+  display: flex;            /* foto dan teks sejajar ke samping */
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;       /* membuat foto bulat */
+  border: 5px solid var(--orange);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.tagline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--orange);
+}
+
+.lokasi {
+  color: var(--abu-teks);
+}
+
+
+/* ---------- 5. NAVBAR ---------- */
+nav {
+  position: sticky;         /* menempel di atas saat halaman di-scroll */
+  top: 0;
+  z-index: 100;
+  background-color: var(--putih);
+  border-bottom: 1px solid var(--garis);
+}
+
+.nav-menu {
+  display: flex;
+  flex-wrap: wrap;          /* menu turun ke baris baru jika layar sempit */
+  justify-content: center;
+  gap: 0.25rem 1.75rem;
+  padding: 1rem 0;
+}
+
+.nav-menu a {
+  color: var(--hitam);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-menu a:hover {
+  color: var(--orange);
+}
+
+
+/* ---------- 6. SECTION ---------- */
+
+/* Pendidikan */
+.riwayat li {
+  padding-left: 1.25rem;
+  border-left: 4px solid var(--orange);
+}
+
+.riwayat h3 {
+  margin-bottom: 0.25rem;
+}
+
+.riwayat p {
+  color: var(--abu-teks);
+}
+
+/* Keahlian: kolom menyesuaikan lebar layar */
+.daftar-skill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.daftar-skill li {
+  padding: 1rem 1.25rem;
+  background-color: var(--putih);
+  border: 1px solid var(--garis);
+  border-left: 4px solid var(--orange);
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Portofolio: 3 kolom */
+.grid-proyek {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.kartu {
+  padding: 1.5rem;
+  background-color: var(--putih);
+  border: 1px solid var(--garis);
+  border-top: 4px solid var(--orange);
+  border-radius: 6px;
+}
+
+.kartu p {
+  margin-top: 0.5rem;
+  color: var(--abu-teks);
+}
+
+/* Kontak: link tampil seperti tombol */
+.daftar-kontak {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.daftar-kontak a {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--orange);
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.daftar-kontak a:hover {
+  background-color: var(--orange);
+  color: var(--putih);
+}
+
+
+/* ---------- 7. FOOTER ---------- */
+footer {
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--abu-teks);
+  border-top: 1px solid var(--garis);
+}
+
+
+/* ---------- 8. RESPONSIF ---------- */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .grid-proyek {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Smartphone */
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column;   /* foto di atas, teks di bawah */
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .grid-proyek {
+    grid-template-columns: 1fr;
+  }
+
+  .bagian {
+    padding: 3rem 0;
+  }
+}
